@@ -58,7 +58,7 @@ def train(dataset, args):
     g = g.to(device)
     train_nid, val_nid = train_nid.to(device), val_nid.to(device)
     features, labels = features.to(device), labels.to(device)
-    csc_indptr, csc_indices, edge_ids = g.adj_sparse("csc")
+    csc_indptr, csc_indices, edge_ids = g.adj_tensors("csc")
     if use_uva and device == "cpu":
         features, labels = features.pin_memory(), labels.pin_memory()
         csc_indptr = csc_indptr.pin_memory()
@@ -205,8 +205,8 @@ if __name__ == "__main__":
     if args.dataset == "reddit":
         dataset = load_reddit()
     elif args.dataset == "products":
-        dataset = load_ogb("ogbn-products", "/home/ubuntu/dataset")
+        dataset = load_ogb("ogbn-products", "/data/gsampler")
     elif args.dataset == "papers100m":
-        dataset = load_ogb("ogbn-papers100M", "/home/ubuntu/dataset")
+        dataset = load_ogb("ogbn-papers100M", "/data/gsampler")
     print(dataset[0])
     train(dataset, args)

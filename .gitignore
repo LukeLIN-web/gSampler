@@ -7,3 +7,4 @@ __pycache__
 *.nsys-rep
 third_party
 data
+*.so

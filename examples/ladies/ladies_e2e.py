@@ -123,7 +123,7 @@ def train(dataset, args):
                 num_batches = int((seeds.numel() + small_batch_size - 1) / small_batch_size)
                 seeds_ptr = torch.arange(num_batches + 1, dtype=torch.int64, device="cuda") * small_batch_size
                 seeds_ptr[-1] = seeds.numel()
-            all_blocks = compile_func(bm, fanouts, seeds, seeds_ptr)
+            all_blocks = compile_func(bm, fanouts, seeds, seeds_ptr) # sample time 
 
             for rank in range(num_batches):
                 blocks = []
@@ -226,8 +226,8 @@ if __name__ == "__main__":
     if args.dataset == "reddit":
         dataset = load_reddit()
     elif args.dataset == "products":
-        dataset = load_ogb("ogbn-products", "/home/ubuntu/dataset")
+        dataset = load_ogb("ogbn-products", "/data/gsampler")
     elif args.dataset == "papers100m":
-        dataset = load_ogb("ogbn-papers100M", "/home/ubuntu/dataset")
+        dataset = load_ogb("ogbn-papers100M", "/data/gsampler")
     print(dataset[0])
     train(dataset, args)
