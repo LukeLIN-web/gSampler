@@ -70,6 +70,7 @@ To install `gSampler`, use `pip` to manage your Python environment.
 
 4. Testing the Package Path
    ```shell
+   cp libgs.so /root/share/gsampler/python/gs/
    python3
    import gs
    print(gs.package_path)
