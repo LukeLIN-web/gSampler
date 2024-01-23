@@ -77,6 +77,9 @@ To install `gSampler`, use `pip` to manage your Python environment.
    # Expecting output in this section
    ```
 
+Until Jan 24, OGB has some problems, it will hang the program. 
+https://github.com/snap-stanford/ogb/issues/461#issue-1955811552  
+
 # Supported algorithms
 `gSampler` supports various graph sampling algorithms, including:
 
